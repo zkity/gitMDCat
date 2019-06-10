@@ -6,7 +6,7 @@ import os
 import re
 import copy
 
-comment = '[^_^]: # (#$@#-*&#214&)\n'
+comment = '[^_^]: # (zk)\n'
 
 
 def genCat():
@@ -42,10 +42,12 @@ def genCat():
             s4num = catLine.strip().split(' ')[0].count('#') - 1
             nos4 = catLine.replace('#', '').replace('\n', '').strip()
             ah = '* [{}]'.format(nos4)
-            nosy = nos4.replace('.', '').replace(' ', '-').replace(',', '')
+            nosy = nos4.replace('.', '').replace(' ', '-').replace(',', '').replace('(', '').replace(')', '')
             be = '(#{})'.format(nosy)
             catLineResult = '  '*s4num + ah + be + '\n'
+            catLineResult = catLineResult.lower()
             catSet.append(catLineResult)
+        catSet.append('\n')
         catSet.append(comment)
         allSet.append([md, copy.deepcopy(catSet)])
     return allSet
