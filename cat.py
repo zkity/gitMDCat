@@ -73,6 +73,8 @@ def newFile(catSet):
                     i = 0
                 oldNew = old[i:len(old)]
                 f.seek(0)
+                f.truncate()
+                f.seek(0)
                 f.write(''.join(cat[1]))
                 f.write(''.join(oldNew))
 
